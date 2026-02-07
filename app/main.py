@@ -4,14 +4,14 @@ def copy_file(command: str) -> None:
     if len(temp) != 3:
         return
 
-    cp, src, trg = temp
+    copy, source_file, target_file = temp
 
-    if cp != "cp":
+    if copy != "cp" or source_file == target_file:
         return
 
     try:
-        with (open(src, "r", encoding="utf-8") as file,
-              open(trg, "w", encoding="utf-8") as out):
+        with (open(source_file, "r", encoding="utf-8") as file,
+              open(target_file, "w", encoding="utf-8") as out):
             out.write(file.read())
     except FileNotFoundError:
         return
